@@ -13,16 +13,17 @@ artifactsTemplatesFolder="artifact-templates"
 #: ${FABRIC_DOCKER_VERSION=docker-ce-18.03.0.ce}
 
 : ${DOMAIN:="example.com"}
-: ${IP_ORDERER:="127.0.0.1"}
+: ${IP_ORDERER:="130.147.175.222"}
 : ${ORG1:="a"}
 : ${ORG2:="b"}
 : ${ORG3:="c"}
+: ${ORG4:="d"}
 : ${MAIN_ORG:=${ORG1}}
-: ${IP1:="127.0.0.1"}
-: ${IP2:="127.0.0.1"}
-: ${IP3:="127.0.0.1"}
-
-: ${FABRIC_VERSION:="1.1.0"}
+: ${IP1:="130.147.175.222"}
+: ${IP2:="130.147.175.150"}
+: ${IP3:="130.147.175.150"}
+: ${IP4:="161.85.25.179"}
+: ${FABRIC_VERSION:="x86_64-1.1.0"}
 : ${THIRDPARTY_VERSION:="0.4.8"}
 : ${FABRIC_REST_VERSION:="0.11.1"}
 
@@ -46,21 +47,25 @@ CHAINCODE_BILATERAL_NAME=relationship
 CHAINCODE_COMMON_INIT='{"Args":["init","a","100","b","100"]}'
 CHAINCODE_BILATERAL_INIT='{"Args":["init","a","100","b","100"]}'
 
-DEFAULT_ORDERER_PORT=7050
-DEFAULT_WWW_PORT=8080
-DEFAULT_API_PORT=4000
-DEFAULT_CA_PORT=7054
-DEFAULT_PEER0_PORT=7051
-DEFAULT_PEER0_EVENT_PORT=7053
-DEFAULT_PEER1_PORT=7056
-DEFAULT_PEER1_EVENT_PORT=7058
+#DEFAULT_ORDERER_PORT=7050
+#DEFAULT_WWW_PORT=8080
+#DEFAULT_API_PORT=4000
+#DEFAULT_CA_PORT=7054
+#DEFAULT_PEER0_PORT=7051
+#DEFAULT_PEER0_EVENT_PORT=7053
+#DEFAULT_PEER1_PORT=7056
+#DEFAULT_PEER1_EVENT_PORT=7058
+
+
 
 DEFAULT_PEER_EXTRA_HOSTS="extra_hosts:[newline]      - orderer.$DOMAIN:$IP_ORDERER"
 DEFAULT_CLI_EXTRA_HOSTS="extra_hosts:[newline]      - orderer.$DOMAIN:$IP_ORDERER[newline]      - www.$DOMAIN:$IP_ORDERER[newline]      - www.$ORG1.$DOMAIN:$IP1[newline]      - www.$ORG2.$DOMAIN:$IP2[newline]      - www.$ORG3.$DOMAIN:$IP3"
-DEFAULT_API_EXTRA_HOSTS="extra_hosts:[newline]      - orderer.$DOMAIN:$IP_ORDERER[newline]      - peer0.$ORG1.$DOMAIN:$IP1[newline]      - peer0.$ORG2.$DOMAIN:$IP2[newline]      - peer0.$ORG3.$DOMAIN:$IP3[newline]      - peer1.$ORG1.$DOMAIN:$IP1[newline]      - peer1.$ORG2.$DOMAIN:$IP2[newline]      - peer1.$ORG3.$DOMAIN:$IP3"
-DEFAULT_API_EXTRA_HOSTS1="extra_hosts:[newline]      - orderer.$DOMAIN:$IP_ORDERER[newline]      - peer0.$ORG2.$DOMAIN:$IP2[newline]      - peer0.$ORG3.$DOMAIN:$IP3[newline]      - peer1.$ORG2.$DOMAIN:$IP2[newline]      - peer1.$ORG3.$DOMAIN:$IP3"
-DEFAULT_API_EXTRA_HOSTS2="extra_hosts:[newline]      - orderer.$DOMAIN:$IP_ORDERER[newline]      - peer0.$ORG1.$DOMAIN:$IP1[newline]      - peer0.$ORG3.$DOMAIN:$IP3[newline]      - peer1.$ORG1.$DOMAIN:$IP1[newline]      - peer1.$ORG3.$DOMAIN:$IP3"
-DEFAULT_API_EXTRA_HOSTS3="extra_hosts:[newline]      - orderer.$DOMAIN:$IP_ORDERER[newline]      - peer0.$ORG1.$DOMAIN:$IP1[newline]      - peer0.$ORG2.$DOMAIN:$IP2[newline]      - peer1.$ORG1.$DOMAIN:$IP1[newline]      - peer1.$ORG2.$DOMAIN:$IP2"
+DEFAULT_API_EXTRA_HOSTS="extra_hosts:[newline]      - orderer.$DOMAIN:$IP_ORDERER[newline]      - peer0.$ORG1.$DOMAIN:$IP1[newline]      - peer0.$ORG2.$DOMAIN:$IP2[newline]      - peer0.$ORG3.$DOMAIN:$IP3[newline]      - peer1.$ORG1.$DOMAIN:$IP1[newline]      - peer1.$ORG2.$DOMAIN:$IP2[newline]      - peer1.$ORG3.$DOMAIN:$IP3[newline]      - peer0.$ORG4.$DOMAIN:$IP4[newline]      - peer1.$ORG4.$DOMAIN:$IP4"
+DEFAULT_API_EXTRA_HOSTS1="extra_hosts:[newline]      - orderer.$DOMAIN:$IP_ORDERER[newline]      - peer0.$ORG2.$DOMAIN:$IP2[newline]      - peer0.$ORG3.$DOMAIN:$IP3[newline]      - peer0.$ORG4.$DOMAIN:$IP4[newline]      - peer1.$ORG2.$DOMAIN:$IP2[newline]      - peer1.$ORG3.$DOMAIN:$IP3      - peer1.$ORG4.$DOMAIN:$IP4"
+DEFAULT_API_EXTRA_HOSTS2="extra_hosts:[newline]      - orderer.$DOMAIN:$IP_ORDERER[newline]      - peer0.$ORG1.$DOMAIN:$IP1[newline]      - peer0.$ORG3.$DOMAIN:$IP3[newline]      - peer0.$ORG4.$DOMAIN:$IP4[newline]      - peer1.$ORG1.$DOMAIN:$IP1[newline]      - peer1.$ORG3.$DOMAIN:$IP3      - peer1.$ORG4.$DOMAIN:$IP4"
+DEFAULT_API_EXTRA_HOSTS3="extra_hosts:[newline]      - orderer.$DOMAIN:$IP_ORDERER[newline]      - peer0.$ORG1.$DOMAIN:$IP1[newline]      - peer0.$ORG2.$DOMAIN:$IP2[newline]      - peer0.$ORG4.$DOMAIN:$IP4[newline]      - peer1.$ORG1.$DOMAIN:$IP1[newline]      - peer1.$ORG2.$DOMAIN:$IP2      - peer1.$ORG4.$DOMAIN:$IP4"
+DEFAULT_API_EXTRA_HOSTS4="extra_hosts:[newline]      - orderer.$DOMAIN:$IP_ORDERER[newline]      - peer0.$ORG1.$DOMAIN:$IP1[newline]      - peer0.$ORG2.$DOMAIN:$IP2[newline]      - peer0.$ORG3.$DOMAIN:$IP3[newline]      - peer1.$ORG1.$DOMAIN:$IP1[newline]      - peer1.$ORG2.$DOMAIN:$IP2      - peer1.$ORG3.$DOMAIN:$IP3"
+
 
 GID=$(id -g)
 
@@ -165,7 +170,7 @@ function removeDockersWithOrg() {
 
 function generateOrdererDockerCompose() {
     mainOrg=$1
-    echo "Creating orderer docker compose yaml file with $DOMAIN, $ORG1, $ORG2, $ORG3, $DEFAULT_ORDERER_PORT, $DEFAULT_WWW_PORT"
+    echo "Creating orderer docker compose yaml file with $DOMAIN, $ORG1, $ORG2, $ORG3, $ORG4, $DEFAULT_ORDERER_PORT"
 
     compose_template=$TEMPLATES_DOCKER_COMPOSE_FOLDER/docker-composetemplate-orderer.yaml
     f="$GENERATED_DOCKER_COMPOSE_FOLDER/docker-compose-$DOMAIN.yaml"
@@ -173,7 +178,7 @@ function generateOrdererDockerCompose() {
     #addHostFiles ${org}
     cli_extra_hosts=${DEFAULT_CLI_EXTRA_HOSTS}
 
-    sed -e "s/DOMAIN/$DOMAIN/g" -e "s/MAIN_ORG/$mainOrg/g" -e "s/CLI_EXTRA_HOSTS/$cli_extra_hosts/g" -e "s/ORDERER_PORT/$DEFAULT_ORDERER_PORT/g" -e "s/WWW_PORT/$DEFAULT_WWW_PORT/g" -e "s/ORG1/$ORG1/g" -e "s/ORG2/$ORG2/g" -e "s/ORG3/$ORG3/g" ${compose_template} | awk '{gsub(/\[newline\]/, "\n")}1' > ${f}
+    sed -e "s/DOMAIN/$DOMAIN/g" -e "s/MAIN_ORG/$mainOrg/g" -e "s/CLI_EXTRA_HOSTS/$cli_extra_hosts/g" -e "s/ORDERER_PORT/$DEFAULT_ORDERER_PORT/g" -e "s/WWW_PORT/8080/g" -e "s/ORG1/$ORG1/g" -e "s/ORG2/$ORG2/g" -e "s/ORG3/$ORG3/g" -e "s/ORG4/$ORG4/g" ${compose_template} | awk '{gsub(/\[newline\]/, "\n")}1' > ${f}
 
     setDockerVersions $f
 }
@@ -238,7 +243,7 @@ function addOrgToNetworkConfig() {
 function generateOrdererArtifacts() {
     org=$1
 
-    echo "Creating orderer yaml files with $DOMAIN, $ORG1, $ORG2, $ORG3, $DEFAULT_ORDERER_PORT, $DEFAULT_WWW_PORT"
+    echo "Creating orderer yaml files with $DOMAIN, $ORG1, $ORG2, $ORG3, $ORG4, $DEFAULT_ORDERER_PORT, $DEFAULT_WWW_PORT"
 
     f="$GENERATED_DOCKER_COMPOSE_FOLDER/docker-compose-$DOMAIN.yaml"
 
@@ -250,10 +255,10 @@ function generateOrdererArtifacts() {
         sed -e "s/DOMAIN/$DOMAIN/g" -e "s/ORG1/$org/g" "$TEMPLATES_ARTIFACTS_FOLDER/configtxtemplate-oneOrg-orderer.yaml" > $GENERATED_ARTIFACTS_FOLDER/configtx.yaml
         createChannels=("common")
     else
-        generateNetworkConfig ${ORG1} ${ORG2} ${ORG3}
+        generateNetworkConfig ${ORG1} ${ORG2} ${ORG3} ${ORG4}
         # replace in configtx
-        sed -e "s/DOMAIN/$DOMAIN/g" -e "s/ORG1/$ORG1/g" -e "s/ORG2/$ORG2/g" -e "s/ORG3/$ORG3/g" $TEMPLATES_ARTIFACTS_FOLDER/configtxtemplate.yaml > $GENERATED_ARTIFACTS_FOLDER/configtx.yaml
-        createChannels=("common" "$ORG1-$ORG2" "$ORG1-$ORG3" "$ORG2-$ORG3")
+        sed -e "s/DOMAIN/$DOMAIN/g" -e "s/ORG1/$ORG1/g" -e "s/ORG2/$ORG2/g" -e "s/ORG3/$ORG3/g" -e "s/ORG4/$ORG4/g" $TEMPLATES_ARTIFACTS_FOLDER/configtxtemplate.yaml > $GENERATED_ARTIFACTS_FOLDER/configtx.yaml
+        createChannels=("common" "$ORG1-$ORG2" "$ORG1-$ORG3" "$ORG2-$ORG3" "$ORG1-$ORG4" "$ORG2-$ORG4" "$ORG3-$ORG4")
     fi
 
 
@@ -301,6 +306,8 @@ function generatePeerArtifacts() {
         api_extra_hosts=${DEFAULT_API_EXTRA_HOSTS2}
       elif [ ${org} == ${ORG3} ]; then
         api_extra_hosts=${DEFAULT_API_EXTRA_HOSTS3}
+      elif [ ${org} == ${ORG4} ]; then
+        api_extra_hosts=${DEFAULT_API_EXTRA_HOSTS4}
       fi
     fi
 
@@ -626,12 +633,21 @@ function downloadMemberMSP() {
 
     info "downloading member MSP files using $f"
 
-   #${ORG1} ${ORG2} ${ORG3}
+   #${ORG1} ${ORG2} ${ORG3} ${ORG4}
 
-    c="for ORG in ${@}; do wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/\$ORG.$DOMAIN/msp/admincerts http://www.\$ORG.$DOMAIN:$DEFAULT_WWW_PORT/crypto-config/peerOrganizations/\$ORG.$DOMAIN/msp/admincerts/Admin@\$ORG.$DOMAIN-cert.pem && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/\$ORG.$DOMAIN/msp/cacerts http://www.\$ORG.$DOMAIN:$DEFAULT_WWW_PORT/crypto-config/peerOrganizations/\$ORG.$DOMAIN/msp/cacerts/ca.\$ORG.$DOMAIN-cert.pem && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/\$ORG.$DOMAIN/msp/tlscacerts http://www.\$ORG.$DOMAIN:$DEFAULT_WWW_PORT/crypto-config/peerOrganizations/\$ORG.$DOMAIN/msp/tlscacerts/tlsca.\$ORG.$DOMAIN-cert.pem; done"
-    echo ${c}
+    c1="wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/a.example.com/msp/admincerts http://www.a.example.com:8081/crypto-config/peerOrganizations/a.example.com/msp/admincerts/Admin@a.example.com-cert.pem && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/a.example.com/msp/cacerts http://www.a.example.com:8081/crypto-config/peerOrganizations/a.example.com/msp/cacerts/ca.a.example.com-cert.pem && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/a.example.com/msp/tlscacerts http://www.a.example.com:8081/crypto-config/peerOrganizations/a.example.com/msp/tlscacerts/tlsca.a.example.com-cert.pem"
+    c2="wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/b.example.com/msp/admincerts http://www.b.example.com:8082/crypto-config/peerOrganizations/b.example.com/msp/admincerts/Admin@b.example.com-cert.pem && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/b.example.com/msp/cacerts http://www.b.example.com:8082/crypto-config/peerOrganizations/b.example.com/msp/cacerts/ca.b.example.com-cert.pem && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/b.example.com/msp/tlscacerts http://www.b.example.com:8082/crypto-config/peerOrganizations/b.example.com/msp/tlscacerts/tlsca.b.example.com-cert.pem"
+    c3="wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/c.example.com/msp/admincerts http://www.c.example.com:8083/crypto-config/peerOrganizations/c.example.com/msp/admincerts/Admin@c.example.com-cert.pem && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/c.example.com/msp/cacerts http://www.c.example.com:8083/crypto-config/peerOrganizations/c.example.com/msp/cacerts/ca.c.example.com-cert.pem && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/c.example.com/msp/tlscacerts http://www.c.example.com:8083/crypto-config/peerOrganizations/c.example.com/msp/tlscacerts/tlsca.c.example.com-cert.pem"
+    c4="wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/d.example.com/msp/admincerts http://www.d.example.com:8084/crypto-config/peerOrganizations/d.example.com/msp/admincerts/Admin@d.example.com-cert.pem && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/d.example.com/msp/cacerts http://www.d.example.com:8084/crypto-config/peerOrganizations/d.example.com/msp/cacerts/ca.d.example.com-cert.pem && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/d.example.com/msp/tlscacerts http://www.d.example.com:8084/crypto-config/peerOrganizations/d.example.com/msp/tlscacerts/tlsca.d.example.com-cert.pem"
+    echo ${c1}
+    echo ${c2}
+    echo ${c3}
+    echo ${c4}
 #    executeBashCmdInCli "docker-compose-$DOMAIN.yaml" "cli.$DOMAIN" "${c} && chown -R $UID:$GID ."
-    docker-compose --file ${f} run --rm "cli.$DOMAIN" bash -c "${c} && chown -R $UID:$GID ."
+    docker-compose --file ${f} run --rm "cli.$DOMAIN" bash -c "${c1} && chown -R $UID:$GID ."
+    docker-compose --file ${f} run --rm "cli.$DOMAIN" bash -c "${c2} && chown -R $UID:$GID ."
+    docker-compose --file ${f} run --rm "cli.$DOMAIN" bash -c "${c3} && chown -R $UID:$GID ."
+    docker-compose --file ${f} run --rm "cli.$DOMAIN" bash -c "${c4} && chown -R $UID:$GID ."
 
 #    #workaround until orderer-based network is implemented
 #    if [ -n $THIS_ORG ]; then
@@ -648,7 +664,7 @@ function downloadNetworkConfig() {
 
     info "downloading network config file using $f"
 
-    c="wget ${WGET_OPTS} http://www.${mainOrgDomain}$DOMAIN:$DEFAULT_WWW_PORT/network-config.json && chown -R $UID:$GID ."
+    c="wget ${WGET_OPTS} http://www.${mainOrgDomain}$DOMAIN:8080/network-config.json && chown -R $UID:$GID ."
     echo ${c}
     docker-compose --file ${f} run --rm "cli.$org.$DOMAIN" bash -c "${c}"
 }
@@ -660,9 +676,9 @@ function downloadChannelTxFiles() {
 
     info "downloading all channel config transaction files using $f"
 
-    for channel_name in ${@:4}
+    for channel_name in ${@:7}
     do
-      c="wget ${WGET_OPTS} --directory-prefix channel http://www.$DOMAIN:$DEFAULT_WWW_PORT/channel/$channel_name.tx && chown -R $UID:$GID ."
+      c="wget ${WGET_OPTS} --directory-prefix channel http://www.$DOMAIN:8080/channel/$channel_name.tx && chown -R $UID:$GID ."
       echo ${c}
       docker-compose --file ${f} run --rm "cli.$org.$DOMAIN" bash -c "${c}"
     done
@@ -677,9 +693,18 @@ function downloadChannelBlockFile() {
 
     info "downloading channel block file of created $channel_name from $DOMAIN and $leader using $f"
 
-    c="wget ${WGET_OPTS} http://www.$DOMAIN:$DEFAULT_WWW_PORT/$channel_name.block && chown -R $UID:$GID ."
+    c="wget ${WGET_OPTS} http://www.$DOMAIN:8080/$channel_name.block && chown -R $UID:$GID ."
     echo ${c}
     docker-compose --file ${f} run --rm "cli.$org.$DOMAIN" bash -c "${c}"
+    
+    
+    if [ $leader == $ORG1 ]
+    then DEFAULT_WWW_PORT="8081" 
+    elif [ $leader == $ORG2 ]
+    then DEFAULT_WWW_PORT="8082"
+    elif [ $leader == $ORG3 ]
+    then DEFAULT_WWW_PORT="8083"
+    fi
 
     #workaround until orderer-based network is implemented
     c="wget ${WGET_OPTS} http://www.$leader.$DOMAIN:$DEFAULT_WWW_PORT/$channel_name.block && chown -R $UID:$GID ."
@@ -688,7 +713,7 @@ function downloadChannelBlockFile() {
 }
 
 function downloadArtifactsMember() {
-  makeCertDirs ${ORG1} ${ORG2} ${ORG3}
+  makeCertDirs ${ORG1} ${ORG2} ${ORG3} ${ORG4}
 
   org=$1
   mainOrg=$2
@@ -701,21 +726,31 @@ function downloadArtifactsMember() {
 
   info "downloading orderer cert file using $f"
 
-  c="wget ${WGET_OPTS} --directory-prefix crypto-config/ordererOrganizations/$DOMAIN/orderers/orderer.$DOMAIN/tls http://www.$DOMAIN:$DEFAULT_WWW_PORT/crypto-config/ordererOrganizations/$DOMAIN/orderers/orderer.$DOMAIN/tls/ca.crt"
+  c="wget ${WGET_OPTS} --directory-prefix crypto-config/ordererOrganizations/$DOMAIN/orderers/orderer.$DOMAIN/tls http://www.$DOMAIN:8080/crypto-config/ordererOrganizations/$DOMAIN/orderers/orderer.$DOMAIN/tls/ca.crt"
   echo ${c}
   docker-compose --file ${f} run --rm "cli.$org.$DOMAIN" bash -c "${c} && chown -R $UID:$GID ."
 
   #TODO download not from all members but from the orderer
   info "downloading member cert files using $f"
-  for one_peer in 'peer0' 'peer1'; do
-      c="for ORG in ${ORG1} ${ORG2} ${ORG3}; do wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/\${ORG}.$DOMAIN/peers/$one_peer.\${ORG}.$DOMAIN/tls http://www.\${ORG}.$DOMAIN:$DEFAULT_WWW_PORT/crypto-config/peerOrganizations/\${ORG}.$DOMAIN/peers/$one_peer.\${ORG}.$DOMAIN/tls/ca.crt; done"
-      echo ${c}
-      docker-compose --file ${f} run --rm "cli.$org.$DOMAIN" bash -c "${c} && chown -R $UID:$GID ."
-  done
+  
+      c1="wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/a.example.com/peers/peer0.a.example.com/tls http://www.a.example.com:8081/crypto-config/peerOrganizations/a.example.com/peers/peer0.a.example.com/tls/ca.crt && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/a.example.com/peers/peer1.a.example.com/tls http://www.a.example.com:8081/crypto-config/peerOrganizations/a.example.com/peers/peer1.a.example.com/tls/ca.crt"
+      c2="wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/b.example.com/peers/peer0.b.example.com/tls http://www.b.example.com:8082/crypto-config/peerOrganizations/b.example.com/peers/peer0.b.example.com/tls/ca.crt && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/b.example.com/peers/peer1.b.example.com/tls http://www.b.example.com:8082/crypto-config/peerOrganizations/b.example.com/peers/peer1.b.example.com/tls/ca.crt"
+      c3="wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/c.example.com/peers/peer0.c.example.com/tls http://www.c.example.com:8083/crypto-config/peerOrganizations/c.example.com/peers/peer0.c.example.com/tls/ca.crt && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/c.example.com/peers/peer1.c.example.com/tls http://www.c.example.com:8083/crypto-config/peerOrganizations/c.example.com/peers/peer1.c.example.com/tls/ca.crt"
+      c4="wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/d.example.com/peers/peer0.d.example.com/tls http://www.d.example.com:8084/crypto-config/peerOrganizations/d.example.com/peers/peer0.d.example.com/tls/ca.crt && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/d.example.com/peers/peer1.d.example.com/tls http://www.d.example.com:8084/crypto-config/peerOrganizations/d.example.com/peers/peer1.d.example.com/tls/ca.crt"
+      echo ${c1}
+      echo ${c2}
+      echo ${c3}
+      echo ${c4}
+      docker-compose --file ${f} run --rm "cli.$org.$DOMAIN" bash -c "${c1} && chown -R $UID:$GID ."
+      docker-compose --file ${f} run --rm "cli.$org.$DOMAIN" bash -c "${c2} && chown -R $UID:$GID ."
+      docker-compose --file ${f} run --rm "cli.$org.$DOMAIN" bash -c "${c3} && chown -R $UID:$GID ."
+      docker-compose --file ${f} run --rm "cli.$org.$DOMAIN" bash -c "${c4} && chown -R $UID:$GID ."
+  
+
 
   if [ -n "$remoteOrg" ]; then
     makeCertDirs $remoteOrg
-    c="wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/${remoteOrg}.$DOMAIN/peers/peer0.${remoteOrg}.$DOMAIN/tls http://www.${remoteOrg}.$DOMAIN:$DEFAULT_WWW_PORT/crypto-config/peerOrganizations/${remoteOrg}.$DOMAIN/peers/peer0.${remoteOrg}.$DOMAIN/tls/ca.crt"
+    c="wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/${remoteOrg}.$DOMAIN/peers/peer0.${remoteOrg}.$DOMAIN/tls http://www.${remoteOrg}.$DOMAIN:7050/crypto-config/peerOrganizations/${remoteOrg}.$DOMAIN/peers/peer0.${remoteOrg}.$DOMAIN/tls/ca.crt"
     echo ${c}
 
     docker-compose --file ${f} run --rm "cli.$org.$DOMAIN" bash -c "${c} && chown -R $UID:$GID ."
@@ -730,16 +765,29 @@ function downloadArtifactsOrderer() {
 
   mainOrg=$1
   #if [ -z "$mainOrg" ]; then
-      makeCertDirs ${ORG1} ${ORG2} ${ORG3}
-      downloadMemberMSP ${ORG1} ${ORG2} ${ORG3}
-
+      makeCertDirs ${ORG1} ${ORG2} ${ORG3} ${ORG4}
+      downloadMemberMSP ${ORG1} ${ORG2} ${ORG3} ${ORG4}
       info "downloading member cert files using $f"
-      for one_peer in 'peer0' 'peer1'; do
-          c="for ORG in ${ORG1} ${ORG2} ${ORG3}; do wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/\${ORG}.$DOMAIN/peers/$one_peer.\${ORG}.$DOMAIN/tls http://www.\${ORG}.$DOMAIN:$DEFAULT_WWW_PORT/crypto-config/peerOrganizations/\${ORG}.$DOMAIN/peers/$one_peer.\${ORG}.$DOMAIN/tls/ca.crt; done"
-          echo ${c}
-          f="$GENERATED_DOCKER_COMPOSE_FOLDER/docker-compose-$DOMAIN.yaml"
-          docker-compose --file ${f} run --rm "cli.$DOMAIN" bash -c "${c} && chown -R $UID:$GID ."
-      done
+
+      c1="wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/a.example.com/peers/peer0.a.example.com/tls http://www.a.example.com:8081/crypto-config/peerOrganizations/a.example.com/peers/peer0.a.example.com/tls/ca.crt && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/a.example.com/peers/peer1.a.example.com/tls http://www.a.example.com:8081/crypto-config/peerOrganizations/a.example.com/peers/peer1.a.example.com/tls/ca.crt"
+      c2="wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/b.example.com/peers/peer0.b.example.com/tls http://www.b.example.com:8082/crypto-config/peerOrganizations/b.example.com/peers/peer0.b.example.com/tls/ca.crt && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/b.example.com/peers/peer1.b.example.com/tls http://www.b.example.com:8082/crypto-config/peerOrganizations/b.example.com/peers/peer1.b.example.com/tls/ca.crt"
+      c3="wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/c.example.com/peers/peer0.c.example.com/tls http://www.c.example.com:8083/crypto-config/peerOrganizations/c.example.com/peers/peer0.c.example.com/tls/ca.crt && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/c.example.com/peers/peer1.c.example.com/tls http://www.c.example.com:8083/crypto-config/peerOrganizations/c.example.com/peers/peer1.c.example.com/tls/ca.crt"
+      c4="wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/d.example.com/peers/peer0.d.example.com/tls http://www.d.example.com:8084/crypto-config/peerOrganizations/d.example.com/peers/peer0.d.example.com/tls/ca.crt && wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/d.example.com/peers/peer1.d.example.com/tls http://www.d.example.com:8084/crypto-config/peerOrganizations/d.example.com/peers/peer1.d.example.com/tls/ca.crt"
+      echo ${c1}
+      echo ${c2}
+      echo ${c3}
+      echo ${c4}
+      docker-compose --file ${f} run --rm "cli.$DOMAIN" bash -c "${c1} && chown -R $UID:$GID ."
+      docker-compose --file ${f} run --rm "cli.$DOMAIN" bash -c "${c2} && chown -R $UID:$GID ."
+      docker-compose --file ${f} run --rm "cli.$DOMAIN" bash -c "${c3} && chown -R $UID:$GID ."
+      docker-compose --file ${f} run --rm "cli.$DOMAIN" bash -c "${c4} && chown -R $UID:$GID ."
+      
+      #for one_peer in 'peer0' 'peer1'; do
+          #c="for ORG in ${ORG1} ${ORG2} ${ORG3}; do if [ $ORG = $ORG1 ] then DEFAULT_WWW_PORT=AWWWPORT elif [ $ORG == $ORG2 ] then DEFAULT_WWW_PORT=BWWWPORT elif [ $ORG == $ORG3 ] then DEFAULT_WWW_PORT=CWWWPORT fi wget ${WGET_OPTS} --directory-prefix crypto-config/peerOrganizations/\${ORG}.$DOMAIN/peers/$one_peer.\${ORG}.$DOMAIN/tls http://www.\${ORG}.$DOMAIN:$DEFAULT_WWW_PORT/crypto-config/peerOrganizations/\${ORG}.$DOMAIN/peers/$one_peer.\${ORG}.$DOMAIN/tls/ca.crt; done"
+          #echo ${c}
+          #f="$GENERATED_DOCKER_COMPOSE_FOLDER/docker-compose-$DOMAIN.yaml"
+          #docker-compose --file ${f} run --rm "cli.$DOMAIN" bash -c "${c} && chown -R $UID:$GID ."
+     # done
   #fi
 }
 
@@ -779,11 +827,11 @@ function addOrg() {
 
   info "adding org $org to channel $channel"
 
-  rm -rf "$GENERATED_ARTIFACTS_FOLDER/crypto-config/peerOrganizations/$org.$DOMAIN"
+  #rm -rf "$GENERATED_ARTIFACTS_FOLDER/crypto-config/peerOrganizations/$org.$DOMAIN"
 
-  removeDockersWithOrg ${org}
+  #removeDockersWithOrg ${org}
 
-  rm -f $GENERATED_ARTIFACTS_FOLDER/newOrgMSP.json $GENERATED_ARTIFACTS_FOLDER/config.* $GENERATED_ARTIFACTS_FOLDER/update.* $GENERATED_ARTIFACTS_FOLDER/updated_config.* $GENERATED_ARTIFACTS_FOLDER/update_in_envelope.*
+  #rm -f $GENERATED_ARTIFACTS_FOLDER/newOrgMSP.json $GENERATED_ARTIFACTS_FOLDER/config.* $GENERATED_ARTIFACTS_FOLDER/update.* $GENERATED_ARTIFACTS_FOLDER/updated_config.* $GENERATED_ARTIFACTS_FOLDER/update_in_envelope.*
 
   # ex. generatePeerArtifacts foo 4005 8086 1254 1251 1253 1256 1258
   generatePeerArtifacts ${org} ${API_PORT} ${WWW_PORT} ${CA_PORT} ${PEER0_PORT} ${PEER0_EVENT_PORT} ${PEER1_PORT} ${PEER1_EVENT_PORT}
@@ -1227,6 +1275,19 @@ while getopts "h?m:o:a:w:c:0:1:2:3:k:v:i:n:M:I:R:P:" opt; do
   esac
 done
 
+DEFAULT_ORDERER_PORT=7050
+DEFAULT_WWW_PORT=$WWW_PORT
+DEFAULT_API_PORT=$API_PORT
+DEFAULT_CA_PORT=$CA_PORT
+DEFAULT_PEER0_PORT=$PEER0_PORT
+DEFAULT_PEER0_EVENT_PORT=$PEER0_EVENT_PORT
+DEFAULT_PEER1_PORT=$PEER1_PORT
+DEFAULT_PEER1_EVENT_PORT=$PEER1_EVENT_PORT
+
+: ${AWWWPORT:=8081 }
+: ${BWWWPORT:=8082 }
+: ${CWWWPORT:=8083 }
+
 checkDocker
 
 if [ "${MODE}" == "up" -a "${ORG}" == "" ]; then
@@ -1263,8 +1324,8 @@ elif [ "${MODE}" == "down" ]; then
 elif [ "${MODE}" == "clean" ]; then
   clean
 elif [ "${MODE}" == "generate" ]; then
-  clean
-  removeArtifacts
+  #clean
+  #removeArtifacts
   setDockerVersions "$GENERATED_DOCKER_COMPOSE_FOLDER/base.yaml"
   setDockerVersions "$GENERATED_DOCKER_COMPOSE_FOLDER/base-intercept.yaml"
 
@@ -1275,13 +1336,13 @@ elif [ "${MODE}" == "generate" ]; then
   generateOrdererArtifacts
   #generateWait
 elif [ "${MODE}" == "generate-orderer" ]; then  # params: -M ORG (optional)
-  clean
+  #clean
   removeArtifacts
   generateOrdererDockerCompose ${MAIN_ORG}
   downloadArtifactsOrderer ${MAIN_ORG}
   generateOrdererArtifacts
 elif [ "${MODE}" == "generate-peer" ]; then # params: -o ORG -R true(optional- REMOTE_ORG)
-  clean
+  #clean
   removeArtifacts
   generatePeerArtifacts ${ORG} #${API_PORT} ${WWW_PORT} ${CA_PORT} ${PEER0_PORT} ${PEER0_EVENT_PORT} ${PEER1_PORT} ${PEER1_EVENT_PORT}
   servePeerArtifacts ${ORG}
@@ -1386,6 +1447,9 @@ elif [ "${MODE}" == "up-1" ]; then
 
   createJoinInstantiateWarmUp ${ORG1} "${ORG1}-${ORG3}" ${CHAINCODE_BILATERAL_NAME} ${CHAINCODE_BILATERAL_INIT}
 
+  createJoinInstantiateWarmUp ${ORG1} "${ORG1}-${ORG4}" ${CHAINCODE_BILATERAL_NAME} ${CHAINCODE_BILATERAL_INIT}
+
+
 elif [ "${MODE}" == "up-2" ]; then
   downloadArtifactsMember "${ORG2}" "" "" "common" "${ORG1}-${ORG2}" "${ORG2}-${ORG3}"
   dockerComposeUp ${ORG2}
@@ -1398,6 +1462,9 @@ elif [ "${MODE}" == "up-2" ]; then
   joinWarmUp ${ORG2} "${ORG1}-${ORG2}" ${CHAINCODE_BILATERAL_NAME}
 
   createJoinInstantiateWarmUp ${ORG2} "${ORG2}-${ORG3}" ${CHAINCODE_BILATERAL_NAME} ${CHAINCODE_BILATERAL_INIT}
+
+  createJoinInstantiateWarmUp ${ORG2} "${ORG2}-${ORG4}" ${CHAINCODE_BILATERAL_NAME} ${CHAINCODE_BILATERAL_INIT}
+
 
 elif [ "${MODE}" == "up-3" ]; then
   downloadArtifactsMember "${ORG3}" "" "" "common" "${ORG1}-${ORG3}" "${ORG2}-${ORG3}"
@@ -1412,6 +1479,26 @@ elif [ "${MODE}" == "up-3" ]; then
 
   downloadChannelBlockFile ${ORG3} ${ORG1} "${ORG1}-${ORG3}"
   joinWarmUp ${ORG3} "${ORG1}-${ORG3}" ${CHAINCODE_BILATERAL_NAME}
+
+  createJoinInstantiateWarmUp ${ORG3} "${ORG3}-${ORG4}" ${CHAINCODE_BILATERAL_NAME} ${CHAINCODE_BILATERAL_INIT}
+
+
+  elif [ "${MODE}" == "up-4" ]; then
+  downloadArtifactsMember "${ORG4}" "" "" "common" "${ORG1}-${ORG4}" "${ORG2}-${ORG4}" "${ORG3}-${ORG4}"
+  dockerComposeUp ${ORG4}
+  installAll ${ORG4}
+
+  downloadChannelBlockFile ${ORG4} ${ORG1} common
+  joinWarmUp ${ORG4} common ${CHAINCODE_COMMON_NAME}
+  
+  downloadChannelBlockFile ${ORG4} ${ORG2} "${ORG2}-${ORG4}"
+  joinWarmUp ${ORG4} "${ORG2}-${ORG4}" ${CHAINCODE_BILATERAL_NAME}
+
+  downloadChannelBlockFile ${ORG4} ${ORG3} "${ORG3}-${ORG4}"
+  joinWarmUp ${ORG4} "${ORG3}-${ORG4}" ${CHAINCODE_BILATERAL_NAME}
+
+  downloadChannelBlockFile ${ORG4} ${ORG1} "${ORG1}-${ORG4}"
+  joinWarmUp ${ORG4} "${ORG1}-${ORG4}" ${CHAINCODE_BILATERAL_NAME}
 
 elif [ "${MODE}" == "addOrg" ]; then
   [[ -z "${ORG}" ]] && echo "missing required argument -o ORG" && exit 1
